@@ -1,0 +1,331 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6" pages="3">
+  <diagram name="1-网络分层总览" id="diagram_overview">
+    <mxGraphModel dx="1810" dy="2324" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=26;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="网络分层：发送端封装 → 网络传输 → 接收端解封装" vertex="1">
+          <mxGeometry height="40" width="860" x="660" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;fontColor=#333333;" value="先理解基本词：主机=能联网的设备；协议=通信规则；头部=每层加的控制信息；载荷=真正要传的业务数据" vertex="1">
+          <mxGeometry height="35" width="1300" x="500" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sender_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=1;fillColor=#E8E8E8;strokeColor=none;fontFamily=Comic Sans MS;fontColor=#333333;verticalAlign=top;arcSize=6;shadow=1;sketch=1;curveFitting=1;jiggle=2;" value="发送端设备 A 例如：上位机 / 嵌入式板卡 / 通信设备" vertex="1">
+          <mxGeometry height="840" width="370" x="80" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="receiver_panel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=1;fillColor=#E8E8E8;strokeColor=none;fontFamily=Comic Sans MS;fontColor=#333333;verticalAlign=top;arcSize=6;shadow=1;sketch=1;curveFitting=1;jiggle=2;" value="接收端设备 B 例如：服务器 / 模块 / 另一台设备" vertex="1">
+          <mxGeometry height="840" width="370" x="1450" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="s_app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="应用层&amp;nbsp;&lt;div&gt;业务数据：START&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;基本概念：&amp;nbsp;&lt;/div&gt;&lt;div&gt;应用=真正使用网络的程序&amp;nbsp;&lt;/div&gt;&lt;div&gt;协议=双方约定的数据格式&amp;nbsp;&lt;/div&gt;&lt;div&gt;载荷=真正想传的内容&lt;/div&gt;" vertex="1">
+          <mxGeometry height="135" width="310" x="110" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="s_trans" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="传输层 加 TCP/UDP 头 端口：5000  基本概念：&amp;nbsp;&lt;div&gt;端口=主机里某个程序的编号&amp;nbsp;&lt;/div&gt;&lt;div&gt;TCP=可靠连接&amp;nbsp;&lt;/div&gt;&lt;div&gt;UDP=简单快速&lt;/div&gt;" vertex="1">
+          <mxGeometry height="135" width="310" x="110" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="s_net" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="网络层 加 IP 头&amp;nbsp;&lt;div&gt;目的 IP：192.168.1.20&amp;nbsp;&lt;div&gt;&amp;nbsp;基本概念：&amp;nbsp;&lt;/div&gt;&lt;div&gt;IP=主机的网络地址&amp;nbsp;&lt;/div&gt;&lt;div&gt;路由=决定下一步往哪走&amp;nbsp;&lt;/div&gt;&lt;div&gt;网关=出本网段的门&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="145" width="310" x="110" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="s_link" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="链路层 加以太网头 / FCS&amp;nbsp;&lt;div&gt;目的 MAC：xx:xx:xx&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;基本概念：&amp;nbsp;&lt;/div&gt;&lt;div&gt;MAC=网卡地址&amp;nbsp;&lt;/div&gt;&lt;div&gt;帧=链路层数据块&amp;nbsp;&lt;/div&gt;&lt;div&gt;ARP=由 IP 找 MAC&lt;/div&gt;" vertex="1">
+          <mxGeometry height="145" width="310" x="110" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="gcfXY027YenBBpGP9JoF-3" edge="1" parent="1" source="s_phy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=6;endArrow=classicThin;endFill=0;endSize=6;curved=0;" target="netdev">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s_phy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="物理层 bit → 电信号 / 光信号&amp;nbsp;&lt;div&gt;&amp;nbsp;基本概念： bit=0或1&amp;nbsp;&lt;/div&gt;&lt;div&gt;介质=网线/光纤/无线信道&amp;nbsp;&lt;/div&gt;&lt;div&gt;Link=物理连接建立&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="310" x="110" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="r_app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="应用层 得到业务数据：START  做什么： 解释业务命令 检查字段、长度、校验 进入设备业务状态机" vertex="1">
+          <mxGeometry height="135" width="310" x="1480" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="r_trans" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="传输层 检查端口 / TCP 状态 去掉 TCP/UDP 头  做什么： 确认交给哪个程序 TCP 还会处理确认、重传、排序" vertex="1">
+          <mxGeometry height="135" width="310" x="1480" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="r_net" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="网络层 检查目的 IP 去掉 IP 头  做什么： 确认是否发给本机 需要转发时查路由表" vertex="1">
+          <mxGeometry height="145" width="310" x="1480" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="r_link" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="链路层 检查以太网帧 / FCS 去掉以太网头  做什么： 确认 MAC 是否匹配 检查帧是否完整、有无错误" vertex="1">
+          <mxGeometry height="145" width="310" x="1480" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="r_phy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="物理层 电信号 / 光信号 → bit  做什么： 从真实信号恢复比特流 关注线缆、速率、自协商、误码" vertex="1">
+          <mxGeometry height="130" width="310" x="1480" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="pkt_app" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="应用层数据 START" vertex="1">
+          <mxGeometry height="55" width="320" x="780" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="pkt_tcp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="传输层封装 [TCP头][START]" vertex="1">
+          <mxGeometry height="55" width="400" x="740" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="pkt_eth" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="链路层封装 [以太网头][IP头][TCP头][START][FCS]" vertex="1">
+          <mxGeometry height="60" width="600" x="640" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="gcfXY027YenBBpGP9JoF-1" edge="1" parent="1" source="netdev" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=6;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;curved=0;" target="r_phy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="netdev" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="网络 / 交换机 / 路由器  交换机：主要看 MAC，转发“帧” 路由器：主要看 IP，转发“包” 通常不理解应用层 START 的业务含义" vertex="1">
+          <mxGeometry height="130" width="440" x="720" y="1125" as="geometry" />
+        </mxCell>
+        <mxCell id="why_layer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=2;" value="为什么要分层？  复杂通信被拆成多个小问题。 应用程序不用关心电压怎么变化；网卡也不用理解业务命令 START。  价值：降低复杂度、便于替换模块、便于团队协作、便于按层排障。" vertex="1">
+          <mxGeometry height="190" width="380" x="80" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="peer_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=2;" value="虚线表示“逻辑上的同层通信”  看起来像：应用层 ↔ 应用层，TCP ↔ TCP，IP ↔ IP。  但真实数据路径仍然是：向下封装 → 通过网络 → 向上解封装。" vertex="1">
+          <mxGeometry height="190" width="380" x="480" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="s_app" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="s_trans">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="s_trans" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="s_net">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="s_net" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="s_link">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="s_link" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="s_phy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" edge="1" parent="1" source="r_phy" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="r_link">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" edge="1" parent="1" source="r_link" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="r_net">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" edge="1" parent="1" source="r_net" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="r_trans">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" edge="1" parent="1" source="r_trans" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="r_app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pa1" edge="1" parent="1" source="pkt_app" style="endArrow=block;html=1;rounded=0;strokeWidth=2;dashed=1;strokeColor=#000000;fontFamily=Comic Sans MS;endSize=8;" target="pkt_tcp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pa2" edge="1" parent="1" source="pkt_tcp" style="endArrow=block;html=1;rounded=0;strokeWidth=2;dashed=1;strokeColor=#000000;fontFamily=Comic Sans MS;endSize=8;" target="pkt_ip">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pa3" edge="1" parent="1" source="pkt_ip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;dashed=1;strokeColor=#000000;fontFamily=Comic Sans MS;endSize=8;" target="pkt_eth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pa4" edge="1" parent="1" source="pkt_eth" style="endArrow=block;html=1;rounded=0;strokeWidth=2;dashed=1;strokeColor=#000000;fontFamily=Comic Sans MS;endSize=8;" target="pkt_sig">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pa5" edge="1" parent="1" source="pkt_sig" style="endArrow=block;html=1;rounded=0;strokeWidth=2;dashed=1;strokeColor=#000000;fontFamily=Comic Sans MS;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="peer_app" edge="1" parent="1" source="s_app" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#9673a6;" target="r_app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="peer_trans" edge="1" parent="1" source="s_trans" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#b85450;" target="r_trans">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="peer_net" edge="1" parent="1" source="pkt_ip" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#d6b656;" target="r_net">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="peer_link" edge="1" parent="1" source="s_link" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#82b366;" target="r_link">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="peer_phy" edge="1" parent="1" source="pkt_sig" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#6c8ebf;" target="r_phy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s_label" parent="1" style="text;html=1;fontSize=20;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="发送端：从上到下逐层封装" vertex="1">
+          <mxGeometry height="30" width="300" x="120" y="1095" as="geometry" />
+        </mxCell>
+        <mxCell id="r_label" parent="1" style="text;html=1;fontSize=20;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="接收端：从下到上逐层解封装" vertex="1">
+          <mxGeometry height="30" width="330" x="1490" y="1095" as="geometry" />
+        </mxCell>
+        <mxCell id="gcfXY027YenBBpGP9JoF-4" edge="1" parent="1" source="s_phy" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#6c8ebf;" target="pkt_sig" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="1015" as="sourcePoint" />
+            <mxPoint x="1480" y="1015" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkt_sig" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="物理层传输 010101... → 电信号 / 光信号 / 无线电波" vertex="1">
+          <mxGeometry height="60" width="500" x="690" y="985" as="geometry" />
+        </mxCell>
+        <mxCell id="gcfXY027YenBBpGP9JoF-6" edge="1" parent="1" source="s_net" style="endArrow=none;html=1;rounded=0;strokeWidth=2;dashed=1;fontFamily=Comic Sans MS;strokeColor=#d6b656;" target="pkt_ip" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="663" as="sourcePoint" />
+            <mxPoint x="1480" y="663" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pkt_ip" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="网络层封装 [IP头][TCP头][START]" vertex="1">
+          <mxGeometry height="55" width="480" x="700" y="630" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2-基本概念速查" id="diagram_vocab">
+    <mxGraphModel dx="1293" dy="803" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title2" parent="1" style="text;html=1;fontSize=26;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="网络分层基本概念速查图：每层看什么、叫什么、怎么排障" vertex="1">
+          <mxGeometry height="40" width="1040" x="430" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;fontColor=#333333;" value="这张图用于补基础概念：同一份数据，在不同层有不同名字；不同层也使用不同的地址或标识" vertex="1">
+          <mxGeometry height="35" width="1120" x="390" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="h0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="层级" vertex="1">
+          <mxGeometry height="70" width="180" x="90" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="这一层主要回答的问题" vertex="1">
+          <mxGeometry height="70" width="360" x="290" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="常见数据名称" vertex="1">
+          <mxGeometry height="70" width="260" x="670" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="地址 / 标识" vertex="1">
+          <mxGeometry height="70" width="300" x="950" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="h4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="工程上重点看什么" vertex="1">
+          <mxGeometry height="70" width="480" x="1270" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="row_app_0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="应用层" vertex="1">
+          <mxGeometry height="110" width="180" x="90" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="row_app_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="我要表达什么业务含义？ 数据字段怎么排列？ 对方收到后怎么解释？" vertex="1">
+          <mxGeometry height="110" width="360" x="290" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="row_app_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="数据 / 消息 / 报文 例如：START" vertex="1">
+          <mxGeometry height="110" width="260" x="670" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="row_app_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="命令字、设备ID、主题名、URL 例如：cmd=START" vertex="1">
+          <mxGeometry height="110" width="300" x="950" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="row_app_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="协议格式、字段长度、校验、大小端、状态机、业务日志" vertex="1">
+          <mxGeometry height="110" width="480" x="1270" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="row_trans_0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="传输层" vertex="1">
+          <mxGeometry height="110" width="180" x="90" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="row_trans_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="数据交给哪个程序？ 是否需要可靠传输？" vertex="1">
+          <mxGeometry height="110" width="360" x="290" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="row_trans_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="TCP 段 / UDP 数据报" vertex="1">
+          <mxGeometry height="110" width="260" x="670" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="row_trans_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="端口号 例如：5000、80、502" vertex="1">
+          <mxGeometry height="110" width="300" x="950" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="row_trans_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="端口是否监听、TCP 是否握手、是否重传、UDP 是否丢包" vertex="1">
+          <mxGeometry height="110" width="480" x="1270" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="row_net_0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="网络层" vertex="1">
+          <mxGeometry height="110" width="180" x="90" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="row_net_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="目标主机在哪里？ 下一跳往哪里走？" vertex="1">
+          <mxGeometry height="110" width="360" x="290" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="row_net_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="IP 包 / IP 数据报" vertex="1">
+          <mxGeometry height="110" width="260" x="670" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="row_net_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="IP 地址 例如：192.168.1.20" vertex="1">
+          <mxGeometry height="110" width="300" x="950" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="row_net_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="IP、子网掩码、网关、路由、ping、traceroute" vertex="1">
+          <mxGeometry height="110" width="480" x="1270" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="row_link_0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="链路层" vertex="1">
+          <mxGeometry height="110" width="180" x="90" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="row_link_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="在当前局域网里，下一跳是哪块网卡？" vertex="1">
+          <mxGeometry height="110" width="360" x="290" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="row_link_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="以太网帧" vertex="1">
+          <mxGeometry height="110" width="260" x="670" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="row_link_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="MAC 地址 例如：00:11:22:33:44:55" vertex="1">
+          <mxGeometry height="110" width="300" x="950" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="row_link_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="ARP、交换机端口、VLAN、帧错误、FCS/CRC" vertex="1">
+          <mxGeometry height="110" width="480" x="1270" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="row_phy_0" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="物理层" vertex="1">
+          <mxGeometry height="110" width="180" x="90" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="row_phy_1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="0 和 1 如何变成真实信号并传过去？" vertex="1">
+          <mxGeometry height="110" width="360" x="290" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="row_phy_2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="bit / 电信号 / 光信号 / 无线信号" vertex="1">
+          <mxGeometry height="110" width="260" x="670" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="row_phy_3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="物理端口、线缆、信道、频点" vertex="1">
+          <mxGeometry height="110" width="300" x="950" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="row_phy_4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="网口灯、Link Up、速率协商、线缆质量、误码率" vertex="1">
+          <mxGeometry height="110" width="480" x="1270" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="extra1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=2;" value="几个容易混的词  主机：能联网收发数据的设备，不一定是电脑，也可以是通信板卡、模块、服务器。  协议：通信双方共同遵守的规则，规定字段含义、顺序、长度、校验、响应方式。  头部：每层加在前面的控制信息，例如 IP 头、TCP 头、以太网头。  有效载荷 Payload：真正要交给上层的内容，例如 START。" vertex="1">
+          <mxGeometry height="260" width="520" x="130" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="extra2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=2;" value="一个完整发送目标如何理解？  192.168.1.20 : 5000  IP 地址 192.168.1.20：找到哪台主机。 端口 5000：找到这台主机上的哪个程序。 MAC 地址：底层在局域网内真正发帧时还需要。  所以：IP 找主机，端口找程序，MAC 找局域网下一跳网卡。" vertex="1">
+          <mxGeometry height="260" width="520" x="690" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="extra3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=17;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=2;" value="抓包时的一个重要视角  你看到的不是单纯的 START，而是被层层包裹后的数据。  如果 Wireshark 能看到以太网帧，说明至少链路层数据到了。 如果能看到 ICMP echo reply，说明网络层基本通。 如果能看到 TCP 三次握手成功，说明传输层连接建立。 如果 TCP 有数据但业务没响应，多半要看应用协议。" vertex="1">
+          <mxGeometry height="260" width="520" x="1250" y="1040" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3-分层排障流程" id="diagram_troubleshoot">
+    <mxGraphModel dx="1645" dy="1022" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title3" parent="1" style="text;html=1;fontSize=26;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="分层排障流程图：设备通信失败时，如何一步步定位？" vertex="1">
+          <mxGeometry height="40" width="1000" x="630" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;fontColor=#333333;" value="原则：先确认下层是否正常，再看上层。下层不通，上层一定不可靠。" vertex="1">
+          <mxGeometry height="35" width="940" x="660" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="1. 物理层 网口灯亮吗？Link Up 吗？ 线缆、供电、PHY、自协商、速率双工正常吗？  不正常：先别看 IP/TCP，先修物理链路。" vertex="1">
+          <mxGeometry height="220" width="290" x="120" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="2. 链路层 ARP 正常吗？MAC 地址对吗？ 交换机端口、VLAN、帧错误、FCS/CRC 是否异常？  不正常：本地局域网转发可能有问题。" vertex="1">
+          <mxGeometry height="220" width="290" x="460" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="3. 网络层 IP 地址、子网掩码、网关、路由配置对吗？ 能 ping 通目标吗？是否跨网段？  不正常：检查 IP 配置、路由、网关、防火墙。" vertex="1">
+          <mxGeometry height="220" width="290" x="800" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="4. 传输层 TCP 端口能连接吗？服务是否监听？ UDP 包是否到达？是否重传/超时？  不正常：检查端口、socket、连接队列、防火墙。" vertex="1">
+          <mxGeometry height="220" width="290" x="1140" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="5. 应用层 协议格式正确吗？长度字段、校验、大小端对吗？ 设备当前状态允许这个命令吗？  不正常：看协议解析、业务日志、状态机。" vertex="1">
+          <mxGeometry height="220" width="290" x="1480" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_a1" edge="1" parent="1" source="f1" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="f2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_a2" edge="1" parent="1" source="f2" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="f3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_a3" edge="1" parent="1" source="f3" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="f4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_a4" edge="1" parent="1" source="f4" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontFamily=Comic Sans MS;fontSize=20;endSize=10;" target="f5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="case_title" parent="1" style="text;html=1;fontSize=26;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="典型现象 → 可能层级" vertex="1">
+          <mxGeometry height="35" width="320" x="790" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontFamily=Comic Sans MS;strokeWidth=4;" value="网口灯不亮 / Link Down → 优先怀疑物理层：线缆、接口、PHY、自协商" vertex="1">
+          <mxGeometry height="80" width="1060" x="420" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;fontFamily=Comic Sans MS;strokeWidth=4;" value="网口灯亮，但 ARP 不到 → 优先怀疑链路层：MAC、交换机、VLAN、ARP" vertex="1">
+          <mxGeometry height="80" width="1060" x="420" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;fontFamily=Comic Sans MS;strokeWidth=4;" value="ARP 有了，但 ping 不通 → 优先怀疑网络层：IP、掩码、网关、路由、防火墙" vertex="1">
+          <mxGeometry height="80" width="1060" x="420" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;fontFamily=Comic Sans MS;strokeWidth=4;" value="ping 通，但 TCP 端口连不上 → 优先怀疑传输层：端口未监听、服务未启动、连接被拦截" vertex="1">
+          <mxGeometry height="80" width="1060" x="420" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=18;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontFamily=Comic Sans MS;strokeWidth=4;" value="TCP 连上，但命令没响应 → 优先怀疑应用层：协议格式、长度、校验、状态机" vertex="1">
+          <mxGeometry height="80" width="1060" x="420" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="summary3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=19;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;fontFamily=Comic Sans MS;strokeWidth=3;" value="最实用的一句话：不要笼统说“网络坏了”，而要判断“坏在第几层”。 分层思想的工程价值，就是把大问题拆成可以验证的小问题。" vertex="1">
+          <mxGeometry height="100" width="1060" x="420" y="1220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

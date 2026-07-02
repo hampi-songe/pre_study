@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>妙记 - 多功能笔记软件</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- 应用容器 -->
+    <div id="app" class="app">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <!-- 侧边栏头部 -->
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>妙记</span>
+                </div>
+                <button class="btn-icon" id="toggleSidebar" title="收起侧边栏">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <!-- 搜索栏 -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="搜索笔记..." autocomplete="off">
+            </div>
+
+            <!-- 新建笔记按钮 -->
+            <button class="btn-new-note" id="newNoteBtn">
+                <i class="fas fa-plus"></i>
+                <span>新建笔记</span>
+            </button>
+
+            <!-- 标签过滤 -->
+            <div class="tags-section">
+                <div class="tags-header">
+                    <span class="tags-title"><i class="fas fa-tags"></i> 标签</span>
+                    <button class="btn-icon btn-sm" id="addTagBtn" title="添加标签">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="tags-list" id="tagsList">
+                    <div class="tag-item active" data-tag="all">
+                        <i class="fas fa-inbox"></i>
+                        <span>全部笔记</span>
+                        <span class="tag-count" id="allCount">0</span>
+                    </div>
+                    <div class="tag-item" data-tag="favorites">
+                        <i class="fas fa-star"></i>
+                        <span>收藏夹</span>
+                        <span class="tag-count" id="favCount">0</span>
+                    </div>
+                    <div class="tag-item" data-tag="trash">
+                        <i class="fas fa-trash"></i>
+                        <span>回收站</span>
+                        <span class="tag-count" id="trashCount">0</span>
+                    </div>
+                </div>
+                <div class="custom-tags" id="customTags"></div>
+            </div>
+
+            <!-- 笔记列表 -->
+            <div class="notes-list-header">
+                <span><i class="fas fa-file-alt"></i> 笔记列表</span>
+                <span class="notes-count" id="notesCount">0</span>
+            </div>
+            <div class="notes-list" id="notesList"></div>
+
+            <!-- 侧边栏底部 -->
+            <div class="sidebar-footer">
+                <button class="btn-icon" id="themeToggle" title="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-icon" id="exportNoteBtn" title="导出笔记">
+                    <i class="fas fa-file-export"></i>
+                </button>
+                <button class="btn-icon" id="settingsBtn" title="设置">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <span class="footer-stats" id="footerStats">已就绪</span>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content" id="mainContent">
+            <!-- 工具栏 -->
+            <header class="toolbar" id="toolbar">
+                <button class="btn-icon" id="menuToggle" title="展开侧边栏">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="note-title-bar">
+                    <input type="text" id="noteTitle" placeholder="输入笔记标题..." class="note-title-input">
+                    <div class="note-meta" id="noteMeta">
+                        <span id="noteDate"></span>
+                        <span id="noteWordCount"></span>
+                    </div>
+                </div>
+                <div class="toolbar-actions">
+                    <button class="btn-icon" id="previewToggle" title="切换预览模式">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn-icon" id="pinNoteBtn" title="置顶笔记">
+                        <i class="fas fa-thumbtack"></i>
+                    </button>
+                    <button class="btn-icon" id="favNoteBtn" title="收藏笔记">
+                        <i class="far fa-star"></i>
+                    </button>
+                    <button class="btn-icon btn-danger" id="deleteNoteBtn" title="删除笔记">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- 编辑器区域 -->
+            <div class="editor-container" id="editorContainer">
+                <!-- 空状态 -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <h2>欢迎使用妙记</h2>
+                    <p>点击下方按钮创建你的第一篇笔记</p>
+                    <button class="btn-new-note btn-lg" id="emptyNewNoteBtn">
+                        <i class="fas fa-plus"></i> 创建笔记
+                    </button>
+                </div>
+
+                <!-- 编辑器 (实际编辑区) -->
+                <div class="editor-area" id="editorArea" style="display:none;">
+                    <div class="editor-pane" id="editorPane">
+                        <div class="pane-header">
+                            <i class="fas fa-pen"></i> 编辑
+                            <div class="pane-actions">
+                                <button class="btn-icon btn-sm" id="boldBtn" title="加粗"><i class="fas fa-bold"></i></button>
+                                <button class="btn-icon btn-sm" id="italicBtn" title="斜体"><i class="fas fa-italic"></i></button>
+                                <button class="btn-icon btn-sm" id="headingBtn" title="标题"><i class="fas fa-heading"></i></button>
+                                <button class="btn-icon btn-sm" id="listBtn" title="列表"><i class="fas fa-list"></i></button>
+                                <button class="btn-icon btn-sm" id="codeBtn" title="代码块"><i class="fas fa-code"></i></button>
+                                <button class="btn-icon btn-sm" id="imageBtn" title="图片"><i class="fas fa-image"></i></button>
+                            </div>
+                        </div>
+                        <textarea id="noteEditor" placeholder="开始写点什么..." spellcheck="true"></textarea>
+                    </div>
+                    <div class="preview-pane" id="previewPane">
+                        <div class="pane-header">
+                            <i class="fas fa-eye"></i> 预览
+                        </div>
+                        <div class="preview-content" id="previewContent"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 添加标签模态框 -->
+        <div class="modal-overlay" id="tagModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3><i class="fas fa-tag"></i> 新建标签</h3>
+                    <button class="btn-icon modal-close" id="tagModalClose"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="tagNameInput" placeholder="输入标签名称..." class="modal-input">
+                    <div class="tag-colors" id="tagColors">
+                        <div class="color-option active" data-color="#6366f1" style="background:#6366f1"></div>
+                        <div class="color-option" data-color="#ef4444" style="background:#ef4444"></div>
+                        <div class="color-option" data-color="#f59e0b" style="background:#f59e0b"></div>
+                        <div class="color-option" data-color="#10b981" style="background:#10b981"></div>
+                        <div class="color-option" data-color="#3b82f6" style="background:#3b82f6"></div>
+                        <div class="color-option" data-color="#ec4899" style="background:#ec4899"></div>
+                        <div class="color-option" data-color="#8b5cf6" style="background:#8b5cf6"></div>
+                        <div class="color-option" data-color="#14b8a6" style="background:#14b8a6"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="tagModalCancel">取消</button>
+                    <button class="btn btn-primary" id="tagModalConfirm">创建</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设置模态框 -->
+        <div class="modal-overlay" id="settingsModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3><i class="fas fa-cog"></i> 设置</h3>
+                    <button class="btn-icon modal-close" id="settingsModalClose"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body settings-body">
+                    <div class="setting-item">
+                        <label>默认编辑器模式</label>
+                        <select id="settingEditorMode">
+                            <option value="split">分屏模式</option>
+                            <option value="edit">仅编辑</option>
+                            <option value="preview">仅预览</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>自动保存间隔</label>
+                        <select id="settingAutoSave">
+                            <option value="1000">1秒</option>
+                            <option value="3000" selected>3秒</option>
+                            <option value="5000">5秒</option>
+                            <option value="0">关闭</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>字体大小</label>
+                        <select id="settingFontSize">
+                            <option value="14px">小</option>
+                            <option value="16px" selected>中</option>
+                            <option value="18px">大</option>
+                            <option value="20px">超大</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>默认排序</label>
+                        <select id="settingSort">
+                            <option value="updated">按更新时间</option>
+                            <option value="created">按创建时间</option>
+                            <option value="title">按标题</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>笔记列表视图</label>
+                        <select id="settingViewMode">
+                            <option value="list">列表视图</option>
+                            <option value="compact">紧凑视图</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="settingsCancel">取消</button>
+                    <button class="btn btn-primary" id="settingsSave">保存设置</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 确认对话框 -->
+        <div class="modal-overlay" id="confirmModal">
+            <div class="modal modal-sm">
+                <div class="modal-header">
+                    <h3><i class="fas fa-exclamation-triangle"></i> <span id="confirmTitle">确认</span></h3>
+                    <button class="btn-icon modal-close" id="confirmModalClose"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage">确定要执行此操作吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="confirmCancel">取消</button>
+                    <button class="btn btn-danger" id="confirmOk">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

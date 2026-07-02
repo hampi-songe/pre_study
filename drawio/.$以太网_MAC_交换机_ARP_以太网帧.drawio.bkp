@@ -1,0 +1,258 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6" pages="4">
+  <diagram name="1-以太网MAC交换机ARP总览" id="overview">
+    <mxGraphModel dx="1810" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=28;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="以太网、MAC、交换机、ARP：局域网里一帧数据怎么送到对方网卡" vertex="1">
+          <mxGeometry height="45" width="855" x="525" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#333333;fontFamily=Comic Sans MS;" value="本讲聚焦链路层：IP 负责“目标主机是谁”，以太网真正发送时还需要 MAC 地址；ARP 用来由 IP 找 MAC，交换机根据 MAC 转发帧" vertex="1">
+          <mxGeometry height="40" width="1480" x="405" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="hA" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="主机 A / 上位机 IP：192.168.1.10 MAC：AA:AA:AA:AA:AA:AA&amp;nbsp;&lt;div&gt;&amp;nbsp;应用想发：START&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="330" x="90" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="sw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="交换机  维护 MAC 地址表&amp;nbsp;&lt;div&gt;根据&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;目的MAC&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;决定从哪个端口转发&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;不知道目的 MAC 时会泛洪&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="380" x="760" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="hB" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="主机 B / 设备 IP：192.168.1.20&amp;nbsp;&lt;div&gt;MAC：BB:BB:BB:BB:BB:BB  5000 端口程序等待命令&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="330" x="1480" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="concept1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="以太网是什么？  以太网是局域网里最常见的链路层技术。 它规定了：数据如何组织成“帧”、帧里有哪些字段、如何用 MAC 地址在局域网内发送。" vertex="1">
+          <mxGeometry height="200" width="390" x="90" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="concept2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="MAC 地址是什么？  MAC 是网卡在链路层使用的地址。 格式通常是 6 字节，例如：00:11:22:33:44:55。  作用：在同一个局域网内，找到目标网卡或下一跳网卡。" vertex="1">
+          <mxGeometry height="200" width="390" x="520" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="concept3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="交换机是什么？  交换机连接多台局域网设备。 它主要看以太网帧里的“源 MAC”和“目的 MAC”。  源 MAC：用于学习这个 MAC 在哪个端口。 目的 MAC：用于决定往哪个端口转发。" vertex="1">
+          <mxGeometry height="200" width="390" x="950" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="concept4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="ARP 是什么？  ARP 用于解决：我知道对方 IP，但不知道对方 MAC。  ARP 请求：谁是 192.168.1.20？请告诉我你的 MAC。 ARP 应答：我是 192.168.1.20，我的 MAC 是 BB:BB:...。" vertex="1">
+          <mxGeometry height="200" width="390" x="1380" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="frame" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="真正进入网线前的数据形态  [以太网头][IP头][TCP头][START][FCS]  以太网头里最重要：目的 MAC、源 MAC、类型字段 FCS 用于检查帧是否出错" vertex="1">
+          <mxGeometry height="180" width="860" x="520" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="tip" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="一句话主线  IP 地址帮你确定“哪台主机”； ARP 帮你查到这台主机的 MAC； 以太网帧带着目的 MAC 进入交换机； 交换机根据 MAC 地址表把帧送到正确端口。" vertex="1">
+          <mxGeometry height="160" width="860" x="520" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="hA" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="sw" value="以太网帧：目的MAC=BB...">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="sw" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="hB" value="转发到 B 所在端口">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="hA" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="frame" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="255" y="560" />
+              <mxPoint x="255" y="980" />
+              <mxPoint x="520" y="980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="frame" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="hB" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1380" y="980" />
+              <mxPoint x="1660" y="980" />
+              <mxPoint x="1660" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2-以太网帧结构" id="ethernet_frame">
+    <mxGraphModel dx="1810" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=28;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="以太网帧：链路层真正发送的数据块长什么样" vertex="1">
+          <mxGeometry height="45" width="1000" x="450" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#333333;fontFamily=Comic Sans MS;" value="帧是链路层的数据单位；它把 IP 包包在里面，并在外面加上 MAC 地址和校验信息" vertex="1">
+          <mxGeometry height="40" width="1300" x="300" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="preamble" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;fontFamily=Comic Sans MS;" value="前导码 Preamble  用于让接收端同步时钟 通常抓包里看不到" vertex="1">
+          <mxGeometry height="130" width="250" x="120" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="dst" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="目的 MAC 6 字节  这帧要发给哪块网卡 交换机主要看它来转发" vertex="1">
+          <mxGeometry height="130" width="290" x="390" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="src" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="源 MAC 6 字节  这帧是谁发出来的 交换机会用它学习 MAC 表" vertex="1">
+          <mxGeometry height="130" width="290" x="700" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="type" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="类型 Type 2 字节  说明载荷是什么 例如 IPv4、IPv6、ARP" vertex="1">
+          <mxGeometry height="130" width="260" x="1010" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="payload" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=4;fontFamily=Comic Sans MS;" value="载荷 Payload 46~1500 字节常见  通常装 IP 包或 ARP 报文 例如：[IP头][TCP头][START]" vertex="1">
+          <mxGeometry height="130" width="430" x="1290" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="fcs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="FCS / CRC 4 字节  检查帧在链路上传输时是否出错 错误帧通常会被丢弃" vertex="1">
+          <mxGeometry height="130" width="250" x="1740" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="frame_full" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="以太网帧可以这样理解：  [目的MAC][源MAC][类型][载荷][FCS]  其中“载荷”里可能装的是 IP 包： [IP头][TCP头][应用数据]  所以以太网帧是把网络层数据继续包了一层。" vertex="1">
+          <mxGeometry height="260" width="620" x="270" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mtu" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="MTU 是什么？  MTU 表示链路层一次最多能承载多大的网络层数据。 以太网常见 MTU 是 1500 字节。  如果 IP 包太大，就可能需要分片，或者由上层控制每次发送的数据不要太大。" vertex="1">
+          <mxGeometry height="260" width="620" x="1010" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="notpayload" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="注意：FCS 通常不是应用层校验。  FCS 只用于检查以太网帧在当前链路上传输是否出错。 它不会告诉你业务命令格式是否正确。  业务层仍然可能需要自己的长度字段、命令字、校验字段。" vertex="1">
+          <mxGeometry height="250" width="620" x="270" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="debug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="工程调试视角  如果有大量 CRC / FCS 错误： 优先怀疑链路或物理问题，例如网线、接口、干扰、速率/双工协商。  如果以太网帧正常，但业务无响应： 继续往上看 IP、TCP、应用协议。" vertex="1">
+          <mxGeometry height="250" width="620" x="1010" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="f0" edge="1" parent="1" source="preamble" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="dst" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" edge="1" parent="1" source="dst" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="src" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" edge="1" parent="1" source="src" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="type" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" edge="1" parent="1" source="type" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="payload" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" edge="1" parent="1" source="payload" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="fcs" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3-ARP工作流程" id="arp_flow">
+    <mxGraphModel dx="3017" dy="1873" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=28;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="ARP 工作流程：已知 IP，如何找到 MAC 地址" vertex="1">
+          <mxGeometry height="45" width="960" x="470" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#333333;fontFamily=Comic Sans MS;" value="ARP 只在局域网内工作：发送方知道目标 IP，但以太网发帧需要目的 MAC，于是先广播询问" vertex="1">
+          <mxGeometry height="40" width="1380" x="260" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="主机 A IP：192.168.1.10 MAC：AA:AA:AA:AA:AA:AA  想发送给：192.168.1.20" vertex="1">
+          <mxGeometry height="170" width="330" x="80" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="SW" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="交换机  收到广播帧后 转发到除入口外的其他端口" vertex="1">
+          <mxGeometry height="150" width="380" x="760" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="主机 B IP：192.168.1.20 MAC：BB:BB:BB:BB:BB:BB  发现 ARP 请求问的是自己" vertex="1">
+          <mxGeometry height="170" width="330" x="1480" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="其他主机 C IP：192.168.1.30 MAC：CC:CC:CC:CC:CC:CC  发现不是问自己，忽略" vertex="1">
+          <mxGeometry height="150" width="330" x="1480" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="step1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="步骤 1：A 查 ARP 缓存  A 先看本机 ARP 表： 192.168.1.20 对应哪个 MAC？  如果查不到，就要发 ARP 请求。" vertex="1">
+          <mxGeometry height="180" width="360" x="80" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="step2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="步骤 2：ARP 请求是广播  A 发出： 谁是 192.168.1.20？ 请告诉 192.168.1.10。  目的 MAC = FF:FF:FF:FF:FF:FF 表示局域网内大家都能收到。" vertex="1">
+          <mxGeometry height="220" width="420" x="530" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="step3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="步骤 3：B 发送 ARP 应答  B 回复 A： 我是 192.168.1.20， 我的 MAC 是 BB:BB:BB:BB:BB:BB。  ARP 应答通常是单播发回 A。" vertex="1">
+          <mxGeometry height="220" width="420" x="1030" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="step4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="步骤 4：A 更新 ARP 缓存并发送数据  A 记住： 192.168.1.20 → BB:BB:BB:BB:BB:BB  之后发送以太网帧时： 目的 MAC 就填 BB:BB:...。" vertex="1">
+          <mxGeometry height="220" width="600" x="80" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="pitfall" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="常见问题  ARP 表错误：可能导致发给错误 MAC。 ARP 不通：同网段通信可能失败。 IP 冲突：两个设备声称同一个 IP，ARP 会混乱。 跨网段：ARP 查的是网关 MAC，不是远端主机 MAC。" vertex="1">
+          <mxGeometry height="220" width="690" x="760" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="A" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="SW" value="ARP 请求：广播">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="SW" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="B" value="广播转发">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="SW" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="C" value="其他主机也收到">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="B" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="SW" value="ARP 应答：单播">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="SW" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="A" value="返回 B 的 MAC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" edge="1" parent="1" source="step1" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="step2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" edge="1" parent="1" source="step2" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="step3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" edge="1" parent="1" source="step3" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="step4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1240" y="850" />
+              <mxPoint x="380" y="850" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="4-交换机MAC学习与转发" id="switch_learning">
+    <mxGraphModel dx="2586" dy="1606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=28;fontStyle=1;strokeColor=none;fillColor=none;fontFamily=Comic Sans MS;" value="交换机如何转发：学习源 MAC，查找目的 MAC" vertex="1">
+          <mxGeometry height="45" width="1040" x="430" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" parent="1" style="text;html=1;fontSize=18;fontStyle=1;strokeColor=none;fillColor=none;fontColor=#333333;fontFamily=Comic Sans MS;" value="交换机不是靠 IP 转发普通二层帧，而是靠 MAC 地址表；它会从每个收到的帧里学习“源 MAC 在哪个端口”" vertex="1">
+          <mxGeometry height="40" width="1460" x="220" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="交换机  MAC 地址表 AA:AA... → 端口 1 BB:BB... → 端口 2 CC:CC... → 端口 3" vertex="1">
+          <mxGeometry height="240" width="380" x="760" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="A" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="端口 1 主机 A MAC：AA:AA..." vertex="1">
+          <mxGeometry height="130" width="300" x="90" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="B" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="端口 2 主机 B MAC：BB:BB..." vertex="1">
+          <mxGeometry height="130" width="300" x="1510" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="C" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="端口 3 主机 C MAC：CC:CC..." vertex="1">
+          <mxGeometry height="130" width="300" x="90" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="D" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=4;shadow=1;sketch=1;jiggle=1;fontFamily=Comic Sans MS;" value="端口 4 主机 D MAC：DD:DD..." vertex="1">
+          <mxGeometry height="130" width="300" x="1510" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="learn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="交换机学习过程  1. 从端口 1 收到帧 2. 看到源 MAC = AA:AA... 3. 记录：AA:AA... 在端口 1  这叫 MAC 学习。" vertex="1">
+          <mxGeometry height="230" width="420" x="460" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="forward" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="交换机转发过程  如果目的 MAC = BB:BB... 并且表里知道 BB 在端口 2： 只从端口 2 发出去。  如果不知道目的 MAC： 会向其他端口泛洪。" vertex="1">
+          <mxGeometry height="230" width="420" x="1020" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="unicast" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="单播  目的 MAC 是某一台设备的 MAC。 交换机查表后，只发到对应端口。" vertex="1">
+          <mxGeometry height="120" width="320" x="480" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="broadcast" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=4;fontFamily=Comic Sans MS;" value="广播  目的 MAC = FF:FF:FF:FF:FF:FF。 交换机会发到同一广播域内的其他端口。 ARP 请求就是典型广播。" vertex="1">
+          <mxGeometry height="120" width="360" x="1120" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="debug" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=3;fontFamily=Comic Sans MS;" value="工程调试提示  同一个交换机下无法通信：看链路、VLAN、ARP、MAC 表。  广播包很多：可能有 ARP 风暴、环路、异常设备。  MAC 表频繁变化：可能有环路、设备移动、MAC 冲突或网络异常。" vertex="1">
+          <mxGeometry height="180" width="960" x="470" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="A" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="sw" value="源MAC=AA，目的MAC=BB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="sw" style="endArrow=block;html=1;rounded=0;strokeWidth=4;fontStyle=1;fontSize=24;endSize=10;fontFamily=Comic Sans MS;" target="B" value="查表后转发到端口2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="C" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="sw" value="其他端口可参与学习">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="sw" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="D" value="未知目的时可能泛洪">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="learn" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="sw" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="sw" style="endArrow=block;html=1;rounded=0;strokeWidth=3;dashed=1;strokeColor=#000000;endSize=8;fontFamily=Comic Sans MS;fontSize=24;" target="forward" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
